@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.appSidebar{
+  align-items: right;
+  height: 100 vh;
+  width: 100 vw;
+}
