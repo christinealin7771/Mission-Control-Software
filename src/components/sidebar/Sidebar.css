@@ -1,7 +1,8 @@
 .sidebar{
-    height: 700px;
+    height: 705px;
     width: 360px;
     background-color: aqua;
     position: absolute;
-    left: 1200px;
+    left: 1159px;
+    top: 85px;
 }
