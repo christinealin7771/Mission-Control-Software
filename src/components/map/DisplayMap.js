@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-
+import MapContext from "./MapContext";
 import './Maps.css'
 import {
   interaction,layer,custom,control,
@@ -8,14 +8,13 @@ import {
 } from 'react-openlayers'
 
 import {fromLonLat} from 'ol/proj';
+import Maps from './Maps';
 
 
 import * as ol from "ol";
 
-
-
-const Maps = ({ children, zoom, newCenter }) => {
- 
+const DisplayMap = () => {
+          
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
@@ -47,63 +46,22 @@ const Maps = ({ children, zoom, newCenter }) => {
     }
   }
 
-  // var map = new ol.Map({
-  //   target: 'map',
-  //   layers: [
-  //     new ol.layer.Tile({
-  //       source: new ol.source.OSM()
-  //     })
-  //   ],
-  //   view: new ol.View({
-  //     center: ol.proj.fromLonLat([37.41, 8.82]),
-  //     zoom: 4
-  //   })
-  // });
-  // const mapRef = useRef();
-  // const [map, setMap] = useState(null);
-
-  // useEffect(() => {
-  //   let options = {
-  //     view: new ol.View({ zoom, newCenter }),
-  //     layers: [],
-  //     controls: [],
-  //     overlays: []
-  //   };
-  //   let mapObject = new ol.Map(options);
-  //   mapObject.setTarget(mapRef.current);
-  //   setMap(mapObject);
-  //   return () => mapObject.setTarget(undefined);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (!map) return;
-  //   map.getView().setZoom(zoom);
-  // }, [zoom]);
-  // // center change handler
-  // useEffect(() => {
-  //   if (!map) return;
-  //   map.getView().setCenter(center)
-  // }, [center])
-
   return (
-    <div className='mapStyle'>
-
+    <div>
+        
       <button onClick={getLocation} >Position to Current Location</button>
 
-      
-      {/* fromLonLat(center) */}
-      {console.log()}
-      <Map view={{center:washingtonWebMercator,zoom:12}}>
-      <Layers>
-
-          <layer.Tile></layer.Tile>
-      </Layers>
-      </Map>
-      {console.log()}
-      
-      
+    {console.log()}
+    <Maps center={fromLonLat(center)} zoom={12}>
+    <Layers>
+    
+        <layer.Tile></layer.Tile>
+    </Layers>
+    </Maps>
+    {console.log()}
+  
     </div>
   )
 }
 
-export default Maps
+export default DisplayMap
