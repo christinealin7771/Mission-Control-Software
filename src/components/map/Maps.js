@@ -20,10 +20,10 @@ const Maps = ({ children, zoom, newCenter }) => {
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
   
-  const washingtonLonLat = [-77.036667, 38.895];
+  const washingtonLonLat = [-82.3248, 29.6516];
   const washingtonWebMercator = fromLonLat(washingtonLonLat);
 
-  const[center, setCenter] = useState([])
+  const[center, setCenter] = useState([-82.3248, 29.6516])
 
 
   const getLocation = () => {
@@ -89,11 +89,11 @@ const Maps = ({ children, zoom, newCenter }) => {
     <div className='mapStyle'>
 
       <button onClick={getLocation} >Position to Current Location</button>
-
+      <p>{lat}{lng}</p>
       
       {/* fromLonLat(center) */}
       {console.log()}
-      <Map view={{center:washingtonWebMercator,zoom:12}}>
+      <Map view={{center:fromLonLat(center),zoom:12}}>
       <Layers>
 
           <layer.Tile></layer.Tile>
