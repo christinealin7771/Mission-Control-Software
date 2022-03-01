@@ -6,13 +6,17 @@ function Sidebar() {
   return (
     <div className="fixed-top">
         <div className="sidebar">
-          <ul className="sidebarList">
+          <p>Dimensions:</p>
+          <p>X:</p>
+          <p>Y:</p>
+          <p>Distance from Object</p>
+          {/* <ul className="sidebarList">
             {SidebarData.map((val,key)=>{
               return <li key={key} className="row">
                 {val.title}
               </li>
             })}
-          </ul>
+          </ul> */}
         </div>
     </div>
   )
