@@ -1,8 +1,32 @@
 .sidebar{
     height: 705px;
-    width: 360px;
-    background-color: aqua;
+    width: 300px;
+    background-color: white;
     position: absolute;
-    left: 1159px;
-    top: 85px;
+    left: 1219px;
+    top: 86px;
+}
+
+.sidebarList{
+    height: auto;
+    padding: 0;
+    width: 100%;
+    background-color: gray;
+}
+
+.sidebarList .row{
+    width: 100%;
+    height: 50px;
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.sidebarList .row:hover{
+    cursor: pointer;
+    background-color: darkgray;
 }
