@@ -1,22 +1,20 @@
 import React from 'react'
 import './Sidebar.css'
-import {SidebarData} from './SidebarData'
 
 function Sidebar() {
   return (
     <div className="fixed-top">
         <div className="sidebar">
-          <p>Dimensions:</p>
-          <p>X:</p>
-          <p>Y:</p>
-          <p>Distance from Object</p>
-          {/* <ul className="sidebarList">
-            {SidebarData.map((val,key)=>{
-              return <li key={key} className="row">
-                {val.title}
-              </li>
-            })}
-          </ul> */}
+        <h1 className = "sidebarHeading">Settings</h1>
+            <label className="sidebarLabels">Dimensions: </label>
+            <input></input>
+            <label className="sidebarLabels">X: </label>
+            <input></input>
+            <label className="sidebarLabels">Y: </label>
+            <input></input>
+            <label className="sidebarLabels">Distance from Object: </label>
+            <input></input>
+          <button className="button">Send Info</button>
         </div>
     </div>
   )

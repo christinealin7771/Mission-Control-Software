@@ -1,19 +1,44 @@
 .sidebar{
-    height: 705px;
-    width: 300px;
+    height: 575px;
+    width: 294px;
     background-color: white;
+    position: fixed;
+    right: 1em;
+    top: 136px;
+    border: 3px;
+    border-style: solid;
+    border-color:black;
+}
+
+.sidebarHeading{
+    width: 300px;
+    height: 51px;
     position: absolute;
-    left: 1219px;
-    top: 86px;
+    top: -75px;
+    left: -3px;
+    background-color: rgb(37, 38, 43);
+    color:white;
 }
 
-.sidebarList{
-    height: auto;
-    padding: 0;
-    width: 100%;
-    background-color: gray;
+.sidebarLabels{
+    display: block;
+    margin: 2%;
+    font-weight: bold;
 }
 
+.button{
+    display: flex;
+    position: relative;
+    top: 25px;
+    background-color: rgb(43, 44, 50);
+    color: white;
+
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: black;
+}
 .sidebarList .row{
     width: 100%;
     height: 50px;
