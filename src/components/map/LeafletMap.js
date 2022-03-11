@@ -1,9 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react'
 import './LeafletMap.css'
-import {MapContainer, TileLayer, Marker, Popup, FeatureGroup, useMap } from 'react-leaflet';
+import {MapContainer, TileLayer, Marker, Popup, FeatureGroup, useMap, GeoJSON, Rectangle } from 'react-leaflet';
 import { Edit, Icon } from "leaflet";
-// import { EditControl } from 'react-leaflet-draw'
 import GetLocation from './GetLocation';
+// import EditControl from './EditControl';
+// import L from "leaflet";
+
 
 
 const POSITION_CLASSES = {
@@ -19,6 +21,9 @@ const LeafletMap = () => {
     let currentMap;
     const location = GetLocation();
     const ZOOM_LEVEL = 16;
+
+    const [editMode, toggleEditMode] = React.useState(false);
+ 
 
     function LocationIconControl (){
       currentMap = useMap()
@@ -39,7 +44,7 @@ const LeafletMap = () => {
 
     const showMyLocation = () => {
       if(location.loaded && !location.error){
-        currentMap.flyTo(
+          currentMap.flyTo(
           [location.coordinates.lat, location.coordinates.lng],
           ZOOM_LEVEL,
           {animate: true}
@@ -51,13 +56,19 @@ const LeafletMap = () => {
       return true
     }
 
+    const rectangle = [
+      [29.645803, -82.333412],
+      [29.745813, -82.337412]
+    ]
+  
+
   return (
     <div>
 
-        <MapContainer center={coord} zoom={14} scrollWheelZoom={true}>
-            {/* <FeatureGroup>
-                <EditControl/>
-            </FeatureGroup> */}
+        <MapContainer center={coord} zoom={14} scrollWheelZoom={true} className="map" key={`shouldRemount_${editMode}`}>
+       
+
+
 
             <TileLayer
              
@@ -65,6 +76,7 @@ const LeafletMap = () => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
 
+            <Rectangle bounds = {rectangle} />
 
             
             {location.loaded && !location.error && (
@@ -81,6 +93,9 @@ const LeafletMap = () => {
               
          
         </MapContainer>
+
+
+    
 
     
     </div>
