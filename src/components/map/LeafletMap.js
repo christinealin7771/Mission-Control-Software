@@ -4,7 +4,9 @@ import {MapContainer, TileLayer, Marker, Popup, FeatureGroup, useMap, GeoJSON, R
 import { Edit, Icon } from "leaflet";
 import GetLocation from './GetLocation';
 // import EditControl from './EditControl';
-// import L from "leaflet";
+import L from "leaflet";
+
+import Geoman from './Geoman';
 
 
 
@@ -22,7 +24,8 @@ const LeafletMap = () => {
     const location = GetLocation();
     const ZOOM_LEVEL = 16;
 
-    const [editMode, toggleEditMode] = React.useState(false);
+    //const [editMode, toggleEditMode] = React.useState(false);
+
  
 
     function LocationIconControl (){
@@ -31,6 +34,7 @@ const LeafletMap = () => {
         <div className={POSITION_CLASSES.topright} onClick={showMyLocation}>
         <div className="leaflet-control leaflet-bar">
           <button >Current Location</button>
+         
           {/* <img
             style={{lineHeight: 1, display: 'block', cursor: 'pointer'}}
             src={'location-icon.png'}
@@ -56,27 +60,27 @@ const LeafletMap = () => {
       return true
     }
 
-    const rectangle = [
-      [29.645803, -82.333412],
-      [29.745813, -82.337412]
-    ]
+    // const rectangle = [
+    //   [29.645803, -82.333412],
+    //   [29.745813, -82.337412]
+    // ]
   
 
   return (
     <div>
 
-        <MapContainer center={coord} zoom={14} scrollWheelZoom={true} className="map" key={`shouldRemount_${editMode}`}>
+        <MapContainer center={coord} zoom={14} scrollWheelZoom={true}>
        
 
 
-
+            
             <TileLayer
              
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
 
-            <Rectangle bounds = {rectangle} />
+            {/* <Rectangle bounds = {rectangle} /> */}
 
             
             {location.loaded && !location.error && (
@@ -90,6 +94,7 @@ const LeafletMap = () => {
             )}
          
          <LocationIconControl/>
+         <Geoman />
               
          
         </MapContainer>
