@@ -1,3 +1,4 @@
+//this is the google map API but we gotta pay for features so ignore this!!
 import React, {useState} from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@material-ui/core';
