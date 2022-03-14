@@ -71,10 +71,6 @@ const LeafletMap = () => {
     <div>
 
         <MapContainer center={coord} zoom={14} scrollWheelZoom={true}>
-       
-
-
-            
             <TileLayer
              
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -95,9 +91,7 @@ const LeafletMap = () => {
             )}
          
          <LocationIconControl/>
-         <Geoman />
-  
-              
+         <Geoman />    
          
         </MapContainer>
         

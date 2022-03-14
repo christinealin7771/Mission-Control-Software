@@ -19,7 +19,8 @@ const Geoman = () => {
     const leafletContainer = context.layerContainer || context.map;
 
     leafletContainer.pm.addControls({
-      drawMarker: false
+      drawMarker: false,
+      //drawPolygon: false
     });
 
     leafletContainer.pm.setGlobalOptions({ pmIgnore: false });
