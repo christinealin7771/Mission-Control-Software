@@ -5,9 +5,9 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Graphs from './components/Graphs';
-import Maps from './components/Map/Maps';
-import Map from './components/Map/Map';
-import LeafletMap from './components/Map/LeafletMap';
+import Maps from './components/map/Maps';
+import Map from './components/map/Map';
+import LeafletMap from './components/map/LeafletMap';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
