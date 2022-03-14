@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Graphs from './components/Graphs';
+
 import Maps from './components/map/Maps';
 import Map from './components/map/Map';
 import LeafletMap from './components/map/LeafletMap';
@@ -15,6 +16,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
+
       <Router>
         <Header/>
           <Routes>
@@ -34,6 +36,7 @@ function App() {
         
         <Footer/>
       </Router>
+
      
     </div>
   );
