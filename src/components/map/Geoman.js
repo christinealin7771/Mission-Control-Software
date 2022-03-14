@@ -2,9 +2,18 @@ import { useEffect } from "react";
 import { useLeafletContext } from "@react-leaflet/core";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
+import { Draw } from "leaflet";
+
+import { data } from '../../data/data';
 
 const Geoman = () => {
   const context = useLeafletContext();
+
+  function makePopupContent(feature){
+    return `
+      ${feature.geometry.coordinates}   
+    `;
+  }
 
   useEffect(() => {
     const leafletContainer = context.layerContainer || context.map;
@@ -23,18 +32,35 @@ const Geoman = () => {
         // enable editing of circle
         shape.layer.pm.enable();
 
+        const feature = shape.layer.toGeoJSON();
+
+        const coords = makePopupContent(feature);
+        console.log(coords)
+
+        
+        
+        data.push({coords});
+        console.log(data);
+        
+        
+        
         console.log(`object created: ${shape.layer.pm.getShape()}`);
         // console.log(leafletContainer.pm.getGeomanLayers(true).toGeoJSON());
         leafletContainer.pm
           .getGeomanLayers(true)
           .bindPopup("i am whole")
           .openPopup();
+        // leafletContainer.pm
+        //   .getGeomanLayers()
+        //   .map((layer, index) => layer.bindPopup(`I am figure N° ${index}`));
+
         leafletContainer.pm
           .getGeomanLayers()
-          .map((layer, index) => layer.bindPopup(`I am figure N° ${index}`));
+          .map((layer, index) => layer.bindPopup(`${shape.layer.toGeoJSON().geometry.coordinates} `));
+
         shape.layer.on("pm:edit", (e) => {
           const event = e;
-          // console.log(leafletContainer.pm.getGeomanLayers(true).toGeoJSON());
+          //console.log(leafletContainer.pm.getGeomanLayers(true).toGeoJSON());
         });
       }
     });

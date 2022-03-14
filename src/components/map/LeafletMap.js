@@ -7,7 +7,7 @@ import GetLocation from './GetLocation';
 import L from "leaflet";
 
 import Geoman from './Geoman';
-
+import { data } from '../../data/data';
 
 
 const POSITION_CLASSES = {
@@ -60,6 +60,7 @@ const LeafletMap = () => {
       return true
     }
 
+
     // const rectangle = [
     //   [29.645803, -82.333412],
     //   [29.745813, -82.337412]
@@ -95,10 +96,19 @@ const LeafletMap = () => {
          
          <LocationIconControl/>
          <Geoman />
+  
               
          
         </MapContainer>
-
+        
+        <div>
+          {console.log(data)}
+          {data.map((c) => (
+            <p>
+            {c}
+            </p>
+          ))}
+        </div>
 
     
 
