@@ -1,21 +1,21 @@
 .sidebar{
-    height: 575px;
-    width: 294px;
+    height: 100%;
+    width: 250px;
     background-color: white;
-    position: fixed;
+    position: absolute;
     right: 0em;
-    top: 136px;
+    top: 5em;
     border: 3px;
     border-style: solid;
     border-color:black;
 }
 
-.sidebarHeading{
-    width: 300px;
+.sidebar .sidebarHeading{
+    width: 253px;
     height: 51px;
-    position: absolute;
-    top: -75px;
-    left: -3px;
+    position: relative;
+    top: -23px;
+    right: 2px;
     background-color: rgb(37, 38, 43);
     color:white;
 }
