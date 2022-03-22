@@ -4,7 +4,7 @@ import {CssBaseline, Grid} from '@material-ui/core';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Graphs from './components/Graphs';
+import Graphs from './components/graphs/Graphs'
 import Sidebar from './components/sidebar/Sidebar';
 
 import Maps from './components/map/Maps';
