@@ -1,0 +1,41 @@
+.sidebar{
+    height: 100%;
+    width: 250px;
+    background-color: white;
+    position: absolute;
+    right: 0em;
+    top: 5em;
+    border: 3px;
+    border-style: solid;
+    border-color:black;
+}
+
+.sidebar .sidebarHeading{
+    width: 253px;
+    height: 51px;
+    position: relative;
+    top: -23px;
+    right: 2px;
+    background-color: rgb(37, 38, 43);
+    color:white;
+}
+
+.sidebarLabels{
+    display: block;
+    margin: 2%;
+    font-weight: bold;
+}
+
+.button{
+    display: flex;
+    position: relative;
+    top: 25px;
+    background-color: rgb(43, 44, 50);
+    color: white;
+
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: black;
+}

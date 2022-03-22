@@ -31,7 +31,7 @@ const LeafletMap = () => {
     function LocationIconControl (){
       currentMap = useMap()
       return (
-        <div className={POSITION_CLASSES.topright} onClick={showMyLocation}>
+        <div className={POSITION_CLASSES.topright} onClick={showMyLocation}> 
         <div className="leaflet-control leaflet-bar">
           <button >Current Location</button>
          
