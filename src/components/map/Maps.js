@@ -1,3 +1,4 @@
+//this is the open map that doesn't work so ignor this file!!
 import React, {useState, useEffect, useRef} from 'react'
 
 import './Maps.css'
