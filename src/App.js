@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Graphs from './components/Graphs';
+import Sidebar from './components/sidebar/Sidebar';
 
 import Maps from './components/map/Maps';
 import Map from './components/map/Map';
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
 
       <Router>
+        <Sidebar/>
         <Header/>
           <Routes>
           <Route path="/graphs" element={<Graphs/>}></Route>
