@@ -9,6 +9,8 @@ import { data } from '../../data/data';
 const Geoman = () => {
   const context = useLeafletContext();
 
+
+
   function makePopupContent(feature){
     return `
       ${feature.geometry.coordinates}   
@@ -32,15 +34,31 @@ const Geoman = () => {
         // enable editing of circle
         shape.layer.pm.enable();
 
-        const feature = shape.layer.toGeoJSON();
+        //get coordinates
+        // const feature = shape.layer.toGeoJSON();
+        // const coordinate = makePopupContent(feature);
+        // data.push({
+        //   coordinates: coordinate
+        // });
+        // console.log(data[0]);
 
-        const coords = makePopupContent(feature);
-        console.log(coords)
+        //another way to get coordinates
+        var coords = e.layer.getLatLngs();
+        if(e.layer.pm.getShape() === "Rectangle"){
+          coords.map((value)=> {
+            value.map((num) => {
+              data.push({
+                lat: num.lat,
+                lng: num.lng
+              })
+            })
+            
+          })
+        }
 
+        console.log(data)
         
         
-        data.push({coords});
-        console.log(data);
         
         
         
@@ -67,12 +85,27 @@ const Geoman = () => {
 
     leafletContainer.on("pm:remove", (e) => {
       console.log("object removed");
+      // var coords = e.layer.getLatLngs();
+
+      // console.log(coords.length)
+      // console.log(e.layer.pm.getShape())
+      
+      if(e.layer.pm.getShape() === "Rectangle"){
+        for(var i = 0; i < 4; i++)
+        {
+          data.pop()
+        }
+      }
+      
+      console.log(data)
+
       // console.log(leafletContainer.pm.getGeomanLayers(true).toGeoJSON());
     });
 
     return () => {
       leafletContainer.pm.removeControls();
       leafletContainer.pm.setGlobalOptions({ pmIgnore: true });
+      
     };
   }, [context]);
 

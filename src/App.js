@@ -11,13 +11,14 @@ import Maps from './components/map/Maps';
 import Map from './components/map/Map';
 import LeafletMap from './components/map/LeafletMap';
 
+import { data } from './data/data';
+
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-
       <Router>
         <Sidebar/>
         <Header/>
@@ -28,6 +29,7 @@ function App() {
             <Grid container spacing={4} style  ={{width: '100%'}, {height:'100%'}}>
               <Grid item xs={12} md={10}>
                 <LeafletMap/>
+                
               </Grid>
               
             </Grid>
