@@ -1,0 +1,9 @@
+kalsjdl
+Location 34.234 in 243.23123 in 123 in
+LDFM_SIGNAL 40
+kalsjdl
+Location 34.23457 in 243.231238 in 123 in
+LDFM_SIGNAL 34
+kalsjdl
+Location 34.2345 in 243.231237 in 123 in
+LDFM_SIGNAL 22

@@ -3,66 +3,69 @@ import 'leaflet';
 import L from 'leaflet';
 import "leaflet.heat";
 import {MapContainer, TileLayer, Marker, Popup, FeatureGroup, useMap, GeoJSON, Rectangle } from 'react-leaflet';
+import data from '../../data/example.txt'
 import './Graphs.css'
 // import { addressPoints } from "./addressPoints";
 
 export default function Graphs() {
-  // var addressPoints = [
-  //   [-37.8839, 175.3745188667, 0],
-  //   [-37.8869090667, 175.3657417333, 20],
-  //   [-37.8894207167, 175.4015351167, 30],
-  //   [-37.8927369333, 175.4087452333, 45],
-  //   [-37.90585105, 175.4453463833, 22],
-  //   [-37.9064188833, 175.4441556833, 11],
-  //   [-37.90584715, 175.4463564333, 35],
-  //   [-37.9033391333, 175.4244005667, 32],
-  //   [-37.9061991333, 175.4492620333, 40],
-  //   [-37.9058955167, 175.4445613167, 21],
-  //   [-37.88888045, 175.39146475, 38]
-  // ];
   useEffect(() => {
-    var map = L.map("map").setView([-37.8839, 175.3745188667], 19);
+    
+    var str = "";
+    fetch(data)
+    .then(r => r.text())
+    .then(text => {
+      str = text;
+      console.log(str);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxNativeZoom: 19,
-        maxZoom: 25
-    }).addTo(map);
+      const rows = str.slice(0).split('\n');
+      let points = [];
+      console.log(rows);
 
-    // const points = addressPoints
-    // ? addressPoints.map((p) => {
-    //     return [p[0], p[1]];
-    //   })
-    // : [];
-    const options = {
-      minOpacity: 0.6,
-      max: 40,
-      radius: 25,
-      gradient: {
-        0.675: "blue", //27 celsius
-        0.75: "yellow", //30 celsius
-        0.85: "red" //34 celsius
+      for(let i=0; i < rows.length; i++){
+        let j = Math.floor(i/3)
+        // Might need to change indexes when splits start & end
+        // Get lat and long
+        if(i % 3 === 1){
+          let spaceIndex = rows[i].indexOf(' ', 9);
+          points[j] = [];
+          points[j][0] = parseFloat(rows[i].slice(9, spaceIndex)); //lat
+          points[j][1] = parseFloat(rows[i].slice(spaceIndex+4, rows[i].indexOf(' ', spaceIndex+4))); //long, accounts for in
+        }
+        // Get intensity
+        else if(i % 3 === 2)
+          points[j][2] = parseFloat(rows[i].slice(12));
       }
-    };
-    // addressPoints = addressPoints.map(function(p) {
-    //   return [p[0], p[1]];
-    // });
+          
+      console.log(points);
+      var map = L.map("map").setView([points[0][0], points[0][1]], 19);
 
-  L.heatLayer(
-    [
-      [-37.8839, 175.3745188667, 33], //coordinates are the starting view for right now
-      [-37.8869090667, 175.3657417333, 20],
-      [-37.8894207167, 175.4015351167, 30],
-      [-37.8927369333, 175.4087452333, 45],
-      [-37.90585105, 175.4453463833, 22],
-      [-37.9064188833, 175.4441556833, 11],
-      [-37.90584715, 175.4463564333, 35],
-      [-37.9033391333, 175.4244005667, 32],
-      [-37.9061991333, 175.4492620333, 40],
-      [-37.9058955167, 175.4445613167, 21],
-      [-37.88888045, 175.39146475, 38]
-    ], options).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxNativeZoom: 19,
+          maxZoom: 25
+      }).addTo(map);
+
+      // const points = addressPoints
+      // ? addressPoints.map((p) => {
+      //     return [p[0], p[1]];
+      //   })
+      // : [];
+      const options = {
+        minOpacity: 0.6,
+        max: 40,
+        radius: 25,
+        gradient: {
+          0.675: "blue", //27 celsius
+          0.75: "yellow", //30 celsius
+          0.85: "red" //34 celsius
+        }
+      };
+      
+      L.heatLayer(points, options).addTo(map);
+    });
+
+    
 }, []);
 
   return <div id="map" style={{ height: "100vh" }}></div>;
